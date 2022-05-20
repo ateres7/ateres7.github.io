@@ -1,0 +1,41 @@
+body {
+    font-family: monospace;
+}
+
+.grid {
+    /* border: 1px solid black; */
+    display: grid;
+    width: 250px;
+    height: 250px;
+    grid-template-columns: 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px;
+}
+
+.grid-item {
+    /*border: 1px solid black; 
+    can get rid of border*/
+}
+
+.grid-fill {
+    background-color: black;
+    border-radius: 25%;
+    /*can change into diff shapes, etc*/
+}
+
+/*nth child is a vv useful tool to have the odd/even things be seperate???*/
+/* .grid-fill:nth-child(even) {
+    background-color: red;
+    border-radius: 50%;
+    /*can change into diff shapes, etc*\
+    position: relative;
+    top: 5px;
+    left: 5px;
+} */
+
+/*hover interaction within CSS nice*/
+.grid-fill:hover {
+    background-color: red;
+    width: 75px;
+    height: 75px;
+    border: 10px solid blue;
+}
