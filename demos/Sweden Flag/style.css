@@ -1,0 +1,95 @@
+/* Stylesheet for Sweden Flag */
+
+
+/* Creating variables for colours */
+:root {
+	--swedenBlue:  #0068a5;
+	--swedenYellow:  #ffce00;
+}
+
+body {
+	/* Flexbox is a layout model. 
+	   For more info visit https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
+	*/
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height:  100vh;
+}
+
+.flag {
+	margin: 30px;
+}
+
+/* Method 1 - Absolute Position to Manually Place Yellow Bars*/
+
+#sweden-1 {
+	width: 650px;
+	height:  400px;
+	background-color:  var(--swedenBlue);
+	position: relative; /* Need this so elements can be positioned relative to this div */
+}
+
+#swedenYellowVertical-1 {
+	width:  80px;
+	height: 400px;
+	position: absolute; /* Position absolute within the parent div #sweden-1 */
+	left: 205px; /* Move to the left 205px */
+	background-color: var(--swedenYellow);
+}
+
+#swedenYellowHoriztonal-1 {
+	width:  650px;
+	height: 80px;
+	position: absolute; /* Position absolute within the parent div #sweden-1 */
+	top: 160px; /* Move from the top 160px. To calculate, take height of flag (400px) minus the height of yellow bar (80px) and divide by 2. */
+	background-color: var(--swedenYellow);
+}
+
+/* Method 2 - CSS Grid Item Start and End to Colour Yellow Areas */
+
+#sweden-2 {
+	width: 650px;
+	height: 400px;
+	background-color: var(--swedenBlue);
+	display: grid;
+	grid-template-columns: repeat(16,1fr); /* Evenly creates 16 columns */
+	grid-template-rows: repeat(10,1fr); /* Evenly creates 10 rows */
+}
+
+#swedenYellowVertical-2 {
+	grid-column: 6/8; /* start at 6th column and end at 8th column */
+	grid-row: 1/11; /* start at row 1 and end at last row */
+	background-color: var(--swedenYellow);
+}
+
+#swedenYellowHoriztonal-2 {
+	grid-column: 1/18; /* start at first column and end at last column */
+	grid-row: 5/7; /* start at 5th row and end at 7th row */
+	background-color: var(--swedenYellow);
+}
+
+/* Method 3 - CSS Grid Template  */
+
+#sweden-3 {
+  width: 650px;
+  height: 400px;
+  background-color: var(--swedenYellow);
+  display: grid;
+  grid-template: 4fr 2fr 4fr / 5fr 2fr 9fr; /* Short hand for columns and rows. Numbers based on proportions from given flags */
+}
+
+/* Don't need the CSS rule below since the 
+   blue colour is set in the parent DIV.
+   Keeping since this class is used in the
+   HTML file to maintain readability of code. */
+.sweden-blue { 
+	background-color: var(--swedenBlue); 
+} 
+
+.sweden-yellow {
+	background-color: var(--swedenYellow); 
+}
+

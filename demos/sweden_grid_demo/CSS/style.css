@@ -1,0 +1,91 @@
+/*defining variables in CSS*/
+:root {
+    --swedenYellow: #fbd009;
+    --swedenBlue: #1366a0;
+    --swedenWidth: 650px;
+    --swedenHeight: 400px;
+}
+
+body {
+    font-family: monospace;
+    background-color: lightslategrey;
+
+    /*from template*/
+    /* Flexbox is a layout model. 
+	   For more info visit https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
+	*/
+	/* display: flex; 
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height:  100vh; */
+}
+
+/*method 1 - absolute position - doesn't scale, other 2 do*/
+
+#swedenFlag-1 {
+    background-color: var(--swedenBlue);
+    width: var(--swedenWidth);
+    height: var(--swedenHeight);
+    position: relative;
+}
+
+#swedenYellowV-1 {
+    background-color: var(--swedenYellow);
+    width: 80px;
+    height: var(--swedenHeight);
+    position: absolute;
+    left: 200px;
+}
+
+#swedenYellowH-1 {
+    background-color: var(--swedenYellow);
+    width: var(--swedenWidth);
+    height: 80px;
+    position: absolute;
+    top: 160px;
+}
+
+/*method 2 - CSS grid item*/
+
+#swedenFlag-2 {
+    background-color: var(--swedenBlue);
+    width: var(--swedenWidth);
+    height: var(--swedenHeight);
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    /*repeating 16 times 1 fraction??*/
+}
+
+/*grid-template-columns: repeat(16,40px); to repeat the 15px 15px... stuff*/
+
+#swedenYellowV-2 {
+    background-color: var(--swedenYellow);
+    grid-column: 6 / 8;
+    grid-row: 1 / 11;
+}
+
+#swedenYellowH-2 {
+    background-color: var(--swedenYellow);
+    grid-column: 1 / 17;
+    grid-row: 5 / 7;
+}
+
+/*method 2 - CSS grid template*/
+
+#swedenFlag-3 {
+    width: var(--swedenWidth);
+    height: var(--swedenHeight);
+    display: grid;
+    grid-template: 4fr 2fr 4fr / 5fr 2fr 9fr;
+}
+
+.swedenBlue {
+    background-color: var(--swedenBlue);
+}
+
+.swedenYellow {
+    background-color: var(--swedenYellow);
+}

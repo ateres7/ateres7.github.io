@@ -1,0 +1,179 @@
+/* Stylesheet for Typography on the Web */
+
+/* Override default browser spacing */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 50px 100px;
+	background: #E7EFEB;
+	font-family: 'Poppins', sans-serif;
+	font-size: 12px;
+}
+
+@keyframes fading-letters {
+	from {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+}
+
+span {
+	display: inline-block;
+}
+
+.red {
+	color: #E63B3B;
+/*	animation-name: fading-letters;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;*/
+	animation: fading-letters 1s infinite alternate;
+
+}
+
+.blue {
+	color: #3B49F4;
+	animation: fading-letters 1s infinite alternate;
+	animation-delay: 100ms;
+}
+
+.orange {
+	color: #FFB100;
+	animation: fading-letters 1s infinite alternate;
+	animation-delay: 200ms;
+}
+
+.green {
+	color: #009111;
+	animation: fading-letters 1s infinite alternate;
+	animation-delay: 300ms;
+}
+
+/* Defining the Grid */
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3,33.33%);
+	grid-template-rows: 40% 40% 20%;
+/*	border: 1px solid black;
+*/}
+
+/* Testing purposes */
+/*.grid div {
+	border: 1px solid black;
+}*/
+
+/* Defining the header and footer section */
+.header, .footer {
+	grid-column-start: 1;
+	grid-column-end: span 3;
+}
+
+/* Text styling */
+
+h1 {
+	color: #E63B3B;
+	font-family: 'urbane-rounded', sans-serif;
+	font-weight: 600;
+	font-style: normal;
+	font-size: 13vw;
+	line-height: 13vw;
+	padding-bottom: 100px;
+}
+
+h2 {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 700;
+	font-size: 2em;
+}
+
+a {
+	color: #3B49F4;
+	text-decoration: none;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;
+	font-size: 1.5em;
+}
+
+.text-footer {
+	font-family: 'urbane-rounded', sans-serif;
+	font-weight: 500;
+	font-style: normal;
+	text-align: center;
+	font-size: 10em;
+}
+
+.content {
+	padding: 30px;
+}
+
+.content p {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	font-size: 1.5em;
+	line-height: 2em;
+}
+
+@media (max-width:991px) {
+	body {
+		font-size: 8px;
+		margin: 34px;
+	}
+	h1 {
+		font-size: 12.5vw;
+		padding-bottom: 50px;
+	}
+	.grid {
+		display: block;
+	}
+	.content {
+		padding: 0;
+		padding-bottom: 40px;
+	}
+	.content p {
+		padding-top: 20px;
+		padding-bottom: 20px;
+		line-height: 1.75em;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

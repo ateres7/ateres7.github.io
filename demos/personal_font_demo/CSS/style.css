@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'khn_origins';
+    src: url('fonts/origin-webfont.woff2') format('woff2'),
+         url('fonts/origin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+    font-size: 30px;
+    font-family: 'khn_origins', monospace, sans-serif;
+    font-weight: bolder;
+    /*don't need the font to have a weight to make it bolder*/
+}
