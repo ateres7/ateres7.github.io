@@ -73,7 +73,7 @@ body {
     grid-row: 5 / 7;
 }
 
-/*method 2 - CSS grid template*/
+/*method 3 - CSS grid template*/
 
 #swedenFlag-3 {
     width: var(--swedenWidth);
