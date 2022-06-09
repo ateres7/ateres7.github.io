@@ -1,0 +1,129 @@
+<!-- 11.0 JS: Click Position
+	Displaying boxes where the mouse is clicked.
+	https://www.w3schools.com/jsref/event_clientx.asp
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>11.0 JS: Click Position</title>
+		<!-- Need to link jQuery UI CSS file for resizable function to appear -->
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<style>
+			/*  Remove default browser spacing */
+			* {  
+				padding: 0; 
+				margin: 0;
+			}
+			.draggable { 
+				position: absolute;
+				padding:  20px;
+				box-shadow: 0px 0px 25px;
+				cursor: pointer;
+				transition:  all 0.5s;
+				font-size: 5vw;
+				text-transform: uppercase;
+			}
+			body {
+				display:  flex;
+				justify-content: center;
+				align-items: center;
+				width: 100vw;
+				height:  100vh;
+				/* Hide any content that goes beyond the defined width and height*/
+				overflow:  hidden; 
+			}
+			button {
+				/* z-index controls layer placement of element */
+				z-index: 100;
+				padding:  10px;
+				background-color: black;
+				color:  white;
+				border:  none; 
+				font-size:  32px;
+				font-weight:  700;
+			}
+			.border {
+				border: 10px dotted black;
+			}
+		</style>
+	</head>
+	<body>
+		<button>CLICK ANYWHERE ON THE PAGE</button>
+		<!-- Link jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+		<!-- Link jQuery UI library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+		<!-- Internal JavaScript -->
+		<script>
+			// Color palette array based on CSS color names https://www.w3.org/wiki/CSS/Properties/color/keywords
+			let cp = ['green','lime','aquamarine','chartreuse','greenyellow','darkseagreen','lawngreen'];  
+			// By default, the value of a variable if not assigned a value is 0
+			let counter = 0;
+			// Can declare multiple variables at once by separating with a comma
+			let width, height, xpos, ypos; 
+
+			// Place all interactivity inside document ready function
+			$(document).ready(function() {
+
+				// Note that there's a parameter 'e' passed in function. 'e' stands for 'event' and relates to the browser event (interaction). In this case, the event is keyup and you can access information from the event, such as which key has been pressed.
+			    $('body').click(function(e) {
+			    	// Once user clicks, remove directional message.
+			    	$('button').remove();
+
+			    	// Counter to keep track of DIV id
+			    	counter++;
+			    	// Randomly generating values for size and position
+			    	width = Math.floor(Math.random() * 300);
+			    	height = Math.floor(Math.random() * 300);
+
+			    	// Convert x & y coordinates to percentage
+			    	xpos = e.clientX / $(window).width() * 100;
+			    	ypos = e.clientY / $(window).height() * 100;;
+
+			    	// Select random color from color palette
+			    	let randColor = cp[Math.floor(Math.random() * cp.length)]; 
+
+			    	/* Add div to the body of the HTML document with draggable class and specific ids to keep track of different positions, sizes and colours.
+			    	*/
+			    	$('body').append(`<div class="draggable resizable" id="draggable-${counter}"></div>`);
+
+			    	// Can chain css styling with dot notation so you don't have to select the element each time you want to style the element
+			    	// Using percentage for position to have boxes in frame as you resize browser
+			    	$(`#draggable-${counter}`).css('background-color', randColor).css('width',width).css('height',height).css('left',xpos + '%').css('top',ypos + '%');  
+			    	
+			    	// Add text to box
+			    	$(`#draggable-${counter}`).html(e.key);
+
+			    	/* In order for the generated box to be draggable, you need to select it and add the jQuery UI function draggable(). */
+			    	$( '.draggable' ).draggable();
+			    	$( '.resizable' ).resizable();
+			    });
+			    // Selecting the document and checking to see if the mouse is down on a draggable element. If it is, then add class 'border'.
+			    $(document).on("mousedown", ".draggable" , function() {
+		            $(this).addClass('border');
+		        });
+
+		        // Selecting the document and checking to see if the mouse is up on draggable element. If it is, then remove class 'border'.
+			    $(document).on("mouseup", ".draggable" , function() {
+		            $(this).removeClass('border');
+		        });
+		        $( window ).resize(function() {
+				  	$('.draggable').each(function(){
+				  		// Randomly generating values for size and position
+			    		width = Math.floor(Math.random() * 300);
+			    		height = Math.floor(Math.random() * 300);
+				  		$(this).css('width',width).css('height',height);
+				  	})
+				});
+
+				
+			 });
+		</script>
+	</body>
+
+</html>
